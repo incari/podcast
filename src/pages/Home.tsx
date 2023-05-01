@@ -1,13 +1,7 @@
-import { useGetPodcastList } from "../api/api";
+import { Root } from "../api/api.types";
 import { Section } from "../components/Section";
 
-const Home = () => {
-  const { data, isLoading } = useGetPodcastList();
-
-  if (isLoading) {
-    return <h1>loading...</h1>;
-  }
-  console.log(data?.feed.entry.length);
+const Home = ({ data }: { data: Root | undefined }) => {
   return (
     <div>
       <div

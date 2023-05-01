@@ -9,6 +9,13 @@ const getPodcastList: () => Promise<Root> = async () => {
   return response.json();
 };
 
+const getPodcast = async (podcastId: string) => {
+  const response = await fetch(
+    `https://itunes.apple.com/lookup?id=${podcastId}`
+  );
+  return response.json();
+};
+
 const useGetPodcastList = () => {
   return useQuery({
     queryKey: ["podcasts"],
@@ -16,4 +23,11 @@ const useGetPodcastList = () => {
   });
 };
 
-export { getPodcastList, useGetPodcastList };
+const useGetPodcast = (podcastId: string) => {
+  return useQuery({
+    queryKey: ["podcast", podcastId],
+    queryFn: () => getPodcast(podcastId)
+  });
+};
+
+export { useGetPodcastList, useGetPodcast };

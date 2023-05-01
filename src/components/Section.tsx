@@ -10,7 +10,7 @@ export const Section = ({ id, title, author, src }: Props) => {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate(`/${id}`);
+    navigate(`/podcast/${id}`);
   };
 
   return (
